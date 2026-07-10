@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disponibilidad de Especialidades y Turnos</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { margin: 0; padding: 20px 10px; background-color: #dfcbb5; font-family: 'Courier New', Courier, monospace; }
+        ._0x4a2b { width: 100%; max-width: 550px; margin: 0 auto; }
+        ._0x1c8d { background-color: #fffdf0; border-radius: 4px; box-shadow: 0 8px 16px rgba(0,0,0,0.2); padding: 30px 20px; position: relative; min-height: 500px; }
+        ._0x7e3f { text-align: center; margin-bottom: 25px; }
+        ._0x7e3f h1 { font-size: 29px; font-family: sans-serif; }
+        ._0x9a1d { font-family: sans-serif; font-size: 19px; color: #2b2b2b; text-align: center; text-transform: uppercase; margin-bottom: 35px; border-bottom: 2px dashed #ccc; padding-bottom: 15px; }
+        ._0x3b8c { display: flex; align-items: center; margin-bottom: 22px; border-bottom: 1px solid #b4d2e7; padding-bottom: 6px; }
+        ._0x5f2e { width: 38px; height: 38px; border: 2px solid #4a4a4a; background-color: #ffffff; font-family: 'Arial Black', sans-serif; font-size: 18px; color: #d32f2f; text-align: center; line-height: 34px; flex-shrink: 0; }
+        ._0x8d1a { padding-left: 15px; font-size: 14px; color: #333; font-weight: bold; text-transform: uppercase; }
+        ._0x2e9b { color: #555; font-weight: normal; font-family: sans-serif; text-transform: none; display: inline-block; margin-left: 5px; }
+        ._0x6c4f { text-align: center; color: #888; font-style: italic; padding-top: 40px; }
+    </style>
+</head>
+<body>
+    <div class="_0x4a2b">
+        <div class="_0x1c8d">
+            <div class="_0x7e3f">
+                <h1>HOSPITAL DISTRITAL DE ÑEMBY</h1>
+            </div>
+            <div class="_0x9a1d" id="_0xbc12">Cargando fecha...</div>
+            <div id="_0xda34">
+                <p class="_0x6c4f">Obteniendo turnos del día...</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function() {
+            const _0x52ae = [
+                'split', 'text', 'innerText', 'innerHTML', 'createElement', 'className', 'toLowerCase', 
+                'appendChild', 'error', 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTkvdozjXjzy6z3Qf7kX192RmZdAz2CDBa8L8cwq_9DqZN-5BEHAGvgYH3tezowA4ponEnLZNMZy1ja/pub?output=csv',
+                '_0xbc12', '_0xda34', 'fila-especialidad', 'cuadro-cantidad', 'detalle-texto', 'nombre-medico',
+                'style="color: #aaa;"', 'style="color: #bbb;"'
+            ];
+            const _0x01ff = function(_0x3c2d) { return _0x52ae[_0x3c2d]; };
+            
+            async function _0xfe38() {
+                try {
+                    const _0x39a2 = await fetch(_0x01ff(9));
+                    const _0x4d12 = await _0x39a2[_0x01ff(1)]();
+                    const _0x1c2b = _0x4d12[_0x01ff(0)]('\n').map(f => f.trim()).filter(f => f.length > 0);
+                    if (_0x1c2b.length === 0) return;
+
+                    const _0x421a = _0x1c2b[0][_0x01ff(0)](',');
+                    const _0x5f12 = _0x421a[0].replace(/^"(.*)"$/, '$1');
+                    document.getElementById(_0x01ff(10))[_0x01ff(2)] = _0x5f12;
+
+                    const _0x301a = document.getElementById(_0x01ff(11));
+                    _0x301a[_0x01ff(3)] = '';
+
+                    const _0x291b = _0x1c2b.slice(1);
+                    _0x291b.forEach(_0x15fa => {
+                        const _0x481b = _0x15fa[_0x01ff(0)](',').map(c => c.replace(/^"(.*)"$/, '$1'));
+                        const _0x10fa = _0x481b[0] || '00';
+                        const _0x510b = _0x481b[1] || '';
+                        const _0x3da2 = _0x481b[2] || '';
+
+                        if (_0x510b) {
+                            const _0x2a1c = document.createElement('div');
+                            _0x2a1c[_0x01ff(5)] = '_0x3b8c';
+                            
+                            const _0x14bd = parseInt(_0x10fa) === 0 || _0x10fa === '00' || _0x10fa[_0x01ff(6)]() === 'x';
+                            const _0x59ac = _0x14bd ? _0x01ff(16) : '';
+                            const _0x31da = _0x14bd ? _0x01ff(17) : '';
+
+                            _0x2a1c[_0x01ff(3)] = `
+                                <div class="_0x5f2e">${_0x10fa}</div>
+                                <div class="_0x8d1a" ${_0x59ac}>
+                                    ${_0x510b} <span class="_0x2e9b" ${_0x31da}>${_0x3da2}</span>
+                                </div>
+                            `;
+                            _0x301a[_0x01ff(7)](_0x2a1c);
+                        }
+                    });
+                } catch (_0x501b) {
+                    console[_0x01ff(8)]('ERR', _0x501b);
+                    document.getElementById(_0x01ff(10))[_0x01ff(2)] = 'Error de conexión';
+                    document.getElementById(_0x01ff(11))[_0x01ff(3)] = '<p class="_0x6c4f">No se pudieron sincronizar los datos de hoy.</p>';
+                }
+            }
+            _0xfe38();
+        })();
+    </script>
+</body>
+</html>
